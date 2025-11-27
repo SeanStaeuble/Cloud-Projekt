@@ -10,4 +10,8 @@
     - Bildverzeichns
     - Glossar
 
+## Ausgangslage
+Das Ziel ist es einen Service in der Cloud aufzusetzen. Dieser Service soll verschiedenste Anforderungen erfüllen
+
+
 ## Quellen
