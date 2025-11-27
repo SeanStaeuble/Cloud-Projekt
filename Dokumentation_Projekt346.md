@@ -17,3 +17,4 @@ Die Infrastruktur sollte als IaC sein und die Konfigurationsdateien sollten in e
 Tests welche wir durchführen werden ausführlich durch Screenshots in dieser Doku beschrieben.
 
 Test
+Sean isch skibidi
