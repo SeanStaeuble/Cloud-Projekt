@@ -16,8 +16,3 @@ Das Ziel ist es einen Service in der Cloud aufzusetzen. Dieser Service soll vers
 Die Infrastruktur sollte als IaC sein und die Konfigurationsdateien sollten in einer einfachen Versionsvewaltung verwaltet werden.
 Tests welche wir durchführen werden ausführlich durch Screenshots in dieser Doku beschrieben.
 
-## Ziele
-
-
-
-## Quellen
