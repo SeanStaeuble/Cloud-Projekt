@@ -12,9 +12,4 @@
     - Glossar
 
 ## Ausgangslage
-Das Ziel ist es einen Service in der Cloud aufzusetzen. Dieser Service soll verschiedenste Anforderungen erfüllen.
-Die Infrastruktur sollte als IaC sein und die Konfigurationsdateien sollten in einer einfachen Versionsvewaltung verwaltet werden.
-Tests welche wir durchführen werden ausführlich durch Screenshots in dieser Doku beschrieben.
-
-Test
-Sean isch skibidi
+Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann.
