@@ -11,6 +11,7 @@
     - Bildverzeichns
     - Glossar
 
+<<<<<<< HEAD
 ### Ausgangslage
 Das Ziel ist es einen Service in der Cloud aufzusetzen. Dieser Service soll verschiedenste Anforderungen erfüllen.
 Die Infrastruktur sollte als IaC sein und die Konfigurationsdateien sollten in einer einfachen Versionsvewaltung verwaltet werden.
@@ -22,3 +23,7 @@ Unter anderem brauchen wir auch eine automatisierte Infrastrukturbereitstellung 
 Auch noch werden wir eine Versionskontrollierte Verwaltung aller Konfigurations- und Infrastrukturdateien in einem Git-Repository darstellen.
 Die ganze Dokumentation werden wir in Markdown dokumentieren.
 Mittels Screenshots werden wir in der Doku protokolieren und somit die Dokumentation übersichtlicher und einfacher verständlich machen. 
+=======
+## Ausgangslage
+Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann.
+>>>>>>> e19f03ac3b056619ea929ef4ac9dfe038ace5c6e
