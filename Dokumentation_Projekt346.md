@@ -4,7 +4,7 @@
 ## Inhaltsverzeichnis
 - Ausgangslage
 - Ziele
-- Dokumentation
+- Durchführung
 - Fazit & Reflexion
 - Verzeichnisse
     - Quellenverzeichnis
