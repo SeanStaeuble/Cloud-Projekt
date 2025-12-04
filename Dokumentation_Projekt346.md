@@ -21,7 +21,7 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 1. 
 
 ## Verzeichnisse
-## Quellenverzeichnis$
+## Quellenverzeichnis
 
 
 ## Bildverzeichnis
@@ -29,3 +29,4 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 
 ### Glossar
 - IaC: Infrastructure as Code (IaC) bedeutet, dass man Server, Netzwerke und andere IT-Infrastruktur nicht mehr manuell klickt, sondern wie normalen Computer-Code beschreibt. Dadurch kann man alles automatisch, wiederholbar und viel schneller erstellen oder ändern.
+TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
