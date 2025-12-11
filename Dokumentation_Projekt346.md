@@ -1,7 +1,7 @@
 # Dokumentation Cloudprojekt Modul 346
 **by Sean, Noa und Stefan**  
-_Klasse: INP1b
-_Datum: 20.11.2025 - 17.12.2025
+Klasse: INP1b
+Datum: 20.11.2025 - 17.12.2025
 
 ## Kurzbeschreibung
 - Ziel des Projekts in 3–4 Sätzen
@@ -23,51 +23,52 @@ _Datum: 20.11.2025 - 17.12.2025
   - Glossar
 
 ## Ausgangslage
-- Modul, Auftrag durch Lehrperson
-- Rahmenbedingungen (Zeit, Bewertung, Gruppe)
-- Aufgabenstellung in eigenen Worten
+Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann.
 
 ## Ziele
 ### Fachliche Ziele
-- Funktionsfähige Nextcloud-Installation auf AWS
-- …
+Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Services auf AWS, der funktionsfähig, erreichbar und stabil betrieben werden kann. Automatisierte Infrastrukturbereitstellung mittels Infrastructure as Code (IaC), sodass der Service jederzeit reproduzierbar in AWS erstellt werden kann. Unter anderem erstellen wir auch noch eine Versionskontrollierte Verwaltung aller Konfigurations- und Infrastrukturdateien in einem Git-Repository. Die Dokumentation des gesamten Projektes erfolgt in Markdown, inklusive Architektur, Implementierungsschritte und Konfigurationsdateien.
 
 ### Lern- und Projektziele
 - Umgang mit AWS, Linux, IaC, Git
-- …
+
 
 ## Planung und Organisation
 ### Projektorganisation
-- Team, Rollenverteilung
-
-| Aufgabe                   | Verantwortlich | Zeitraum    |
-|---------------------------|----------------|------------|
-| IaC Grundsetup            |                |            |
-| Webserver-Konfiguration   |                |            |
-| DB-Server & DB-Setup      |                |            |
-| Nextcloud-Installation    |                |            |
-| Tests                     |                |            |
-| Dokumentation             |                |            |
+- Noa Imfeld, Dokumentator
+- Stefan Kaufln, Dokumentator
+- Sean Stäuble, zuständig für Skripts
 
 ### Zeitplanung
-- kurze Beschreibung + optional Tabelle mit Meilensteinen
+
+| Aufgabe                   | Verantwortlich | geplanter Zeitraum | gebrauchter Zeitraum |
+|---------------------------|----------------|--------------------|----------------------|
+| IaC Grundsetup            |      Sean      |         2h         |          3h          |
+| Webserver-Konfiguration   | Sean & Stefan  |         2h         |                      |
+| DB-Server & DB-Setup      |   Noa & Sean   |        1.5h        |                      |
+| Nextcloud-Installation    |      Sean      |        1.5h        |                      |
+| Tests                     |      Alle      |         1h         |                      |
+| Dokumentation             |  Stefan & Noa  |         4h         |                      |
+| README                    |      Sean      |         1h         |                      |
 
 ## Architektur
 ### Zielarchitektur
-- Textbeschreibung der Architektur
+Eine Drittperson soll von ihrem Gerät aus über den Browser durchs Internet auf unsere AWS Cloud kommen. Diese ist in einem eigenen Subnetz. In diesem Subnetz sind die EC2 Instanzen also Webserver & Datenbank.
 - Hinweis auf Diagramm
 
 _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 
 ### Komponenten
-- Webserver-VM (OS, Webserver-Software, IP)
-- DB-Server-VM (DB-Typ, IP)
-- Security Groups / Firewall
+- Webserver (Ubuntu, Nextcloud, 72.44.61.93)
+- DB-Server (MySQL-DB, [IP] )
+- (Security Groups / Firewall)
 
 ## Umsetzung IaC und Infrastruktur
 ### IaC-Konzept
-- Welches Tool / welche Scripts
-- Ordnerstruktur kurz beschreiben
+- Visual Studio Code, schreiben der Skripts
+- PuTTY, Connection testen
+
+### Ordnerstruktur
 
 ### Webserver-Setup
 - Wie wird die VM erstellt?
