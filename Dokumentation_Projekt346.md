@@ -59,14 +59,16 @@ Eine Drittperson soll von ihrem Gerät aus über den Browser durchs Internet auf
 _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 
 ### Komponenten
-- Webserver-VM (OS, Webserver-Software, IP)
-- DB-Server-VM (DB-Typ, IP)
-- Security Groups / Firewall
+- Webserver (Ubuntu, Nextcloud, 72.44.61.93)
+- DB-Server (MySQL-DB, [IP] )
+- (Security Groups / Firewall)
 
 ## Umsetzung IaC und Infrastruktur
 ### IaC-Konzept
-- Welches Tool / welche Scripts
-- Ordnerstruktur kurz beschreiben
+- Visual Studio Code, schreiben der Skripts
+- PuTTY, Connection testen
+
+### Ordnerstruktur
 
 ### Webserver-Setup
 - Wie wird die VM erstellt?
