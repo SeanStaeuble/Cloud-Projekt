@@ -70,6 +70,7 @@ _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 
 ### Ordnerstruktur
 
+
 ### Webserver-Setup
 - Wie wird die VM erstellt?
 - Welche Pakete werden installiert?
@@ -101,10 +102,10 @@ _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 ### Testprotokolle
 
 | Test-ID | Datum      | Testperson | Beschreibung                      | Erwartetes Ergebnis                         | Tatsächliches Ergebnis | Fazit / Massnahmen |
-|--------:|------------|-----------|-----------------------------------|---------------------------------------------|------------------------|--------------------|
-| T1      |            |           | Aufruf IP → Installationsassistent | Assistent wird ohne Fehler angezeigt        |                        |                    |
-| T2      |            |           | Verbindung Nextcloud ↔ DB         | Verbindung erfolgreich                      |                        |                    |
-| T3      |            |           | Ausführung IaC-Script             | Infrastruktur wird ohne Fehler erstellt     |                        |                    |
+|--------:|------------|-----------|------------------------------------|---------------------------------------------|------------------------|--------------------|
+| T1      |            |           | Aufruf IP                          | Man kommt von Drittgerät auf Webserver      |                        |                    |
+| T2      |            |           | Verbindung Nextcloud ↔ DB          | Verbindung erfolgreich                      |                        |                    |
+| T3      |            |           | Ausführung IaC-Script              | Infrastruktur wird ohne Fehler erstellt     |                        |                    |
 
 _(Screenshots im Text referenzieren, z.B. `siehe Abbildung 1`.)_
 
