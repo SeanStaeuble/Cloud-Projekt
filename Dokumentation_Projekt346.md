@@ -1,7 +1,7 @@
 # Dokumentation Cloudprojekt Modul 346
 **by Sean, Noa und Stefan**  
-_Klasse: INP1b
-_Datum: 20.11.2025 - 17.12.2025
+Klasse: INP1b
+Datum: 20.11.2025 - 17.12.2025
 
 ## Kurzbeschreibung
 - Ziel des Projekts in 3–4 Sätzen
@@ -31,20 +31,22 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 
 ### Lern- und Projektziele
 - Umgang mit AWS, Linux, IaC, Git
-- …
+
 
 ## Planung und Organisation
 ### Projektorganisation
-- Team, Rollenverteilung
+- Noa Imfeld, Dokumentator
+- Stefan Kaufln, Dokumentator
+- Sean Stäuble, zuständig für Skripts
 
-| Aufgabe                   | Verantwortlich | Zeitraum    |
-|---------------------------|----------------|------------|
-| IaC Grundsetup            |                |            |
-| Webserver-Konfiguration   |                |            |
-| DB-Server & DB-Setup      |                |            |
-| Nextcloud-Installation    |                |            |
-| Tests                     |                |            |
-| Dokumentation             |                |            |
+| Aufgabe                   | Verantwortlich | geplanter Zeitraum | gebrauchter Zeitraum |
+|---------------------------|----------------|--------------------|----------------------|
+| IaC Grundsetup            |      Sean      |         2h         |          3h          |
+| Webserver-Konfiguration   | Sean & Stefan  |         2h         |                      |
+| DB-Server & DB-Setup      |   Noa & Sean   |        1.5h        |                      |
+| Nextcloud-Installation    |      Sean      |        1.5h        |                      |
+| Tests                     |      Alle      |         1h         |                      |
+| Dokumentation             |  Stefan & Noa  |         4h         |                      |
 
 ### Zeitplanung
 - kurze Beschreibung + optional Tabelle mit Meilensteinen
