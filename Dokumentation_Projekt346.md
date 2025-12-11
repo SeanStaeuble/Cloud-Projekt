@@ -39,6 +39,8 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 - Stefan Kaufln, Dokumentator
 - Sean Stäuble, zuständig für Skripts
 
+### Zeitplanung
+
 | Aufgabe                   | Verantwortlich | geplanter Zeitraum | gebrauchter Zeitraum |
 |---------------------------|----------------|--------------------|----------------------|
 | IaC Grundsetup            |      Sean      |         2h         |          3h          |
@@ -47,13 +49,11 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 | Nextcloud-Installation    |      Sean      |        1.5h        |                      |
 | Tests                     |      Alle      |         1h         |                      |
 | Dokumentation             |  Stefan & Noa  |         4h         |                      |
-
-### Zeitplanung
-- kurze Beschreibung + optional Tabelle mit Meilensteinen
+| README                    |      Sean      |         1h         |                      |
 
 ## Architektur
 ### Zielarchitektur
-- Textbeschreibung der Architektur
+Eine Drittperson soll von ihrem Gerät aus über den Browser durchs Internet auf unsere AWS Cloud kommen. Diese ist in einem eigenen Subnetz. In diesem Subnetz sind die EC2 Instanzen also Webserver & Datenbank.
 - Hinweis auf Diagramm
 
 _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
