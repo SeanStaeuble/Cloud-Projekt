@@ -32,22 +32,34 @@ Write-Host "Keypair $KeyName erstellt und in $keyFile gespeichert."
 # 2) Security Group idempotent anlegen
 $SecGroupName = "sec-group-$UserFolder"
 
-# vorhandene Security Group löschen (nur per Name in Default-VPC möglich)
-aws ec2 delete-security-group --group-name $SecGroupName 2>$null   # Default-VPC[web:78]
+Write-Host "Pruefe Security Group $SecGroupName ..."
 
-aws ec2 create-security-group `
-    --group-name $SecGroupName `
-    --description "EC2-Webserver-SG"
+# Versuche, SG nach Name zu finden
+$sgId = aws ec2 describe-security-groups `
+    --group-names $SecGroupName `
+    --query "SecurityGroups[0].GroupId" `
+    --output text 2>$null
 
-aws ec2 authorize-security-group-ingress `
-    --group-name $SecGroupName `
-    --protocol tcp --port 80 --cidr 0.0.0.0/0
+if ($LASTEXITCODE -eq 0 -and $sgId -ne "None") {
+    Write-Host "Security Group $SecGroupName existiert bereits (ID: $sgId) und wird weiterverwendet."
+} else {
+    Write-Host "Security Group $SecGroupName existiert nicht, wird neu erstellt."
 
-aws ec2 authorize-security-group-ingress `
-    --group-name $SecGroupName `
-    --protocol tcp --port 22 --cidr 0.0.0.0/0
+    aws ec2 create-security-group `
+        --group-name $SecGroupName `
+        --description "EC2-Webserver-SG" | Out-Null
 
-Write-Host "Security Group $SecGroupName erstellt und Ports 22/80 freigeschaltet."
+    aws ec2 authorize-security-group-ingress `
+        --group-name $SecGroupName `
+        --protocol tcp --port 80 --cidr 0.0.0.0/0 | Out-Null
+
+    aws ec2 authorize-security-group-ingress `
+        --group-name $SecGroupName `
+        --protocol tcp --port 22 --cidr 0.0.0.0/0 | Out-Null
+
+    Write-Host "Security Group $SecGroupName erstellt und Ports 22/80 freigeschaltet."
+}
+
 
 # 3) Verzeichnis und initial.txt (user-data) erstellen
 $webDir = Join-Path $HOME "ec2webserver"
