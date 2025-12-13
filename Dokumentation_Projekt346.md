@@ -23,14 +23,10 @@ _Datum: 20.11.2025 - 17.12.2025
   - Glossar
 
 ## Ausgangslage
-- Modul, Auftrag durch Lehrperson
-- Rahmenbedingungen (Zeit, Bewertung, Gruppe)
-- Aufgabenstellung in eigenen Worten
+Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann.
 
 ## Ziele
-### Fachliche Ziele
-- Funktionsfähige Nextcloud-Installation auf AWS
-- …
+Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Services auf AWS, der funktionsfähig, erreichbar und stabil betrieben werden kann. Automatisierte Infrastrukturbereitstellung mittels Infrastructure as Code (IaC), sodass der Service jederzeit reproduzierbar in AWS erstellt werden kann. Unter anderem erstellen wir auch noch eine Versionskontrollierte Verwaltung aller Konfigurations- und Infrastrukturdateien in einem Git-Repository. Die Dokumentation des gesamten Projektes erfolgt in Markdown, inklusive Architektur, Implementierungsschritte und Konfigurationsdateien.
 
 ### Lern- und Projektziele
 - Umgang mit AWS, Linux, IaC, Git
