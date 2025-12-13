@@ -1,12 +1,14 @@
 # Dokumentation Cloudprojekt Modul 346
 **by Sean, Noa und Stefan**  
 Klasse: INP1b
+
 Datum: 20.11.2025 - 17.12.2025
 
 ## Kurzbeschreibung
-- Ziel des Projekts in 3–4 Sätzen
-- Was wird gebaut? (Nextcloud auf AWS mit IaC)
-- Wichtigste Anforderungen
+>[!NOTE]
+>
+> Herr Lux hat uns die **Ausgangslage** für das Nextcloud-Projekt gegeben: automatisierte Bereitstellung auf AWS mittels Infrastructure as Code (IaC), vollständig reproduzierbar.
+>Vollständige Ziele und auch wichte Annforderungen werden später in der Dokumentation noch aufgeziegt.
 
 ## Inhaltsverzeichnis
 - [Dokumentation Cloudprojekt Modul 346](#dokumentation-cloudprojekt-modul-346)
@@ -45,7 +47,7 @@ Datum: 20.11.2025 - 17.12.2025
 
 
 ## Ausgangslage
-Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann.
+Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann. Die Dokumentation erfolgt in Markdown und wird per Git bereitgestellt, sodass jedes Teammitglied unabhängig den Anderen Arbeiten kann.
 
 ## Ziele
 Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Services auf AWS, der funktionsfähig, erreichbar und stabil betrieben werden kann. Automatisierte Infrastrukturbereitstellung mittels Infrastructure as Code (IaC), sodass der Service jederzeit reproduzierbar in AWS erstellt werden kann. Unter anderem erstellen wir auch noch eine Versionskontrollierte Verwaltung aller Konfigurations- und Infrastrukturdateien in einem Git-Repository. Die Dokumentation des gesamten Projektes erfolgt in Markdown, inklusive Architektur, Implementierungsschritte und Konfigurationsdateien.
@@ -57,9 +59,13 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 
 ## Planung und Organisation
 ### Projektorganisation
-- Noa Imfeld, Dokumentator
-- Stefan Kaufln, Dokumentator
-- Sean Stäuble, zuständig für Skripts
+- **Noa Imfeld** = Dokumentator
+- **Stefan Kaufln** = Dokumentator
+- **Sean Stäuble** = Hauptzusändiger für Skripts
+
+> [!IMPORTANT]
+> 
+> Dies ist nur die Verteilung der Hauptaufgaben der Projektmitglieder. Wichtig zu wissen ist, dass Noa und Stefan auch an den Skripts gearbeitet haben. Unter anderm hat Sean auch an der Dokumentation gearbeitet.
 
 ### Zeitplanung
 
