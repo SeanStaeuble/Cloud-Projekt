@@ -9,18 +9,40 @@ Datum: 20.11.2025 - 17.12.2025
 - Wichtigste Anforderungen
 
 ## Inhaltsverzeichnis
-- Ausgangslage
-- Ziele
-- Planung und Organisation
-- Architektur
-- Umsetzung IaC und Infrastruktur
-- Umsetzung Nextcloud
-- Tests
-- Fazit & Reflexion
-- Verzeichnisse
-  - Quellenverzeichnis
-  - Bildverzeichnis
-  - Glossar
+- [Dokumentation Cloudprojekt Modul 346](#dokumentation-cloudprojekt-modul-346)
+  - [Kurzbeschreibung](#kurzbeschreibung)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Ausgangslage](#ausgangslage)
+  - [Ziele](#ziele)
+    - [Lern- und Projektziele](#lern--und-projektziele)
+  - [Planung und Organisation](#planung-und-organisation)
+    - [Projektorganisation](#projektorganisation)
+    - [Zeitplanung](#zeitplanung)
+  - [Architektur](#architektur)
+    - [Zielarchitektur](#zielarchitektur)
+    - [Komponenten](#komponenten)
+  - [Umsetzung IaC und Infrastruktur](#umsetzung-iac-und-infrastruktur)
+    - [IaC-Konzept](#iac-konzept)
+    - [Ordnerstruktur](#ordnerstruktur)
+    - [Webserver-Setup](#webserver-setup)
+    - [Datenbank-Setup](#datenbank-setup)
+    - [Automatisierung / Scripts](#automatisierung--scripts)
+  - [Umsetzung Nextcloud](#umsetzung-nextcloud)
+    - [Installation](#installation)
+    - [Erstaufruf / Installationsassistent](#erstaufruf--installationsassistent)
+  - [Tests](#tests)
+    - [Testkonzept](#testkonzept)
+    - [Testprotokolle](#testprotokolle)
+  - [Fazit \& Reflexion](#fazit--reflexion)
+    - [Projektfazit (Gruppe)](#projektfazit-gruppe)
+    - [Persönliche Reflexion Sean](#persönliche-reflexion-sean)
+    - [Persönliche Reflexion Noa](#persönliche-reflexion-noa)
+    - [Persönliche Reflexion Stefan](#persönliche-reflexion-stefan)
+  - [Verzeichnisse](#verzeichnisse)
+    - [Quellenverzeichnis](#quellenverzeichnis)
+    - [Bildverzeichnis](#bildverzeichnis)
+    - [Glossar](#glossar)
+
 
 ## Ausgangslage
 Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erhalten. Dabei sollen wir einen Webserver auf AWS bereitstellen und darauf den Cloud-Dienst Nextcloud installieren und konfigurieren. Die gesamte Einrichtung wird mithilfe von Infrastructure as Code (IaC) umgesetzt und dokumentiert, sodass sie die Installation per IaC von Herrn Lux nachgestellt werden kann.
