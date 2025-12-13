@@ -29,8 +29,9 @@ Wir haben von unserem Lehrer, Herrn Oliver Lux, den Auftrag für ein Projekt erh
 Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Services auf AWS, der funktionsfähig, erreichbar und stabil betrieben werden kann. Automatisierte Infrastrukturbereitstellung mittels Infrastructure as Code (IaC), sodass der Service jederzeit reproduzierbar in AWS erstellt werden kann. Unter anderem erstellen wir auch noch eine Versionskontrollierte Verwaltung aller Konfigurations- und Infrastrukturdateien in einem Git-Repository. Die Dokumentation des gesamten Projektes erfolgt in Markdown, inklusive Architektur, Implementierungsschritte und Konfigurationsdateien.
 
 ### Lern- und Projektziele
-- Umgang mit AWS, Linux, IaC, Git
-
+-	Umgang mit AWS, Linux-Servern, Webserver, DB, Nextcloud.
+-	Professionelle Nutzung von Git (Commits, Branches, Zusammenarbeit).
+- Erstellen einer verständlichen, prägnanten Doku mit Markdown inkl. Bildern/Diagrammen.
 
 ## Planung und Organisation
 ### Projektorganisation
