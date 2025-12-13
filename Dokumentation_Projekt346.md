@@ -8,7 +8,7 @@ Datum: 20.11.2025 - 17.12.2025
 >[!NOTE]
 >
 > Herr Lux hat uns die **Ausgangslage** für das Nextcloud-Projekt gegeben: automatisierte Bereitstellung auf AWS mittels Infrastructure as Code (IaC), vollständig reproduzierbar.
->Vollständige Ziele und auch wichte Annforderungen werden später in der Dokumentation noch aufgeziegt.
+>Vollständige Ziele und auch wichtigee Annforderungen werden später in der Dokumentation noch aufgeziegt.
 
 ## Inhaltsverzeichnis
 - [Dokumentation Cloudprojekt Modul 346](#dokumentation-cloudprojekt-modul-346)
