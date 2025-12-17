@@ -84,7 +84,7 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 Eine Drittperson soll von ihrem Gerät aus über den Browser durchs Internet auf unsere AWS Cloud kommen. Diese ist in einem eigenen Subnetz. In diesem Subnetz sind die EC2 Instanzen also Webserver & Datenbank.
 - Hinweis auf Diagramm
 
-![Aufbau Architektur Diagramm]()
+![Architekurdiagramm](Architekturdiagramm.png)
 
 ### Komponenten
 - Webserver (Ubuntu, Nextcloud, 72.44.61.93)
