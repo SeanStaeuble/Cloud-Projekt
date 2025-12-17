@@ -75,16 +75,16 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 | Webserver-Konfiguration   | Sean & Stefan  |         2h         |         2.5h         |
 | DB-Server & DB-Setup      |   Noa & Sean   |        1.5h        |         2.5h         |
 | Nextcloud-Installation    |      Sean      |        1.5h        |          4h          |
-| Tests                     |      Alle      |         1h         |                      |
+| Tests                     |      Alle      |         1h         |          2h          |
 | Dokumentation             |  Stefan & Noa  |         4h         |          8h          |
-| README                    |      Sean      |         1h         |                      |
+| README                    |      Sean      |         1h         |         1.5h         |
 
 ## Architektur
 ### Zielarchitektur
 Eine Drittperson soll von ihrem Gerät aus über den Browser durchs Internet auf unsere AWS Cloud kommen. Diese ist in einem eigenen Subnetz. In diesem Subnetz sind die EC2 Instanzen also Webserver & Datenbank.
 - Hinweis auf Diagramm
 
-_(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
+![Aufbau Architektur Diagramm]()
 
 ### Komponenten
 - Webserver (Ubuntu, Nextcloud, 72.44.61.93)
