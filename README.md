@@ -40,6 +40,8 @@ Jetzt muss das Skript in PowerShell mit folgendem Befehl ausgeführt werden:
 
 ## 4. Auf NextCloud verbinden
 
+__Hinweis: Man sollte sich erst nach etwa 5-10min auf den Webserver verbinden, da dieser Zeit zum aufsetzen braucht!__
+
 In der Skriptausgabe, wird eine IP des Webservers und des Datenbankservers ausgegeben sammt DB_Nutzer, DB_Name und DB_Passwort.
 
 Mit http://"IP des Webservers"/ können sie auf die Webseite gelangen. Danach müssen sie bei der Datenbank MariaDB/MySQL wählen und dort die ausgegebenen Werte der Datenbank eintragen. Wichtig ist, dass sie beim abschnitt Home die IP des DB-Servers angegeben wird, sammt Port also z. B. "IP des DB-Servers:3306".
