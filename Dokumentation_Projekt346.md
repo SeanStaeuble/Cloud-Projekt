@@ -97,8 +97,19 @@ Eine Drittperson soll von ihrem Gerät aus über den Browser durchs Internet auf
 - PuTTY, Connection testen
  
 ### Webserver-Setup
-Bei der Initialisierung der Ubuntu-Instanz, wird als erstes ein neues Key-Pair und eine Secure-Group erstellt. Nachdem das Key-Pair und die Security-Group erstellt wurde, wird mit "aws ec2 run-instances" die Instanz mit den folgenden Daten gestartet: Image-id, Anzahl Instanzen, Instanz-Typ, Erstelltes Key-Pair, Erstellte Security-Group, User-Data, Region, Tag-Spezifikationen und Querry erstellt.
-Beim Setup des Webservers wird Apache2, php und MariaDB mitinstalliert. 
+Der Webserver wird per User-Data-Skript auf einer Amazon-Linux-2-Instanz eingerichtet.  
+Beim ersten Start der Instanz führt das Skript folgende Schritte aus:
+
+1. System aktualisieren: `yum update -y`.
+2. PHP 8.1 aktivieren (`amazon-linux-extras enable php8.1`) und benötigte Pakete installieren:  
+   `httpd`, `php`, `php-mysqlnd`, `php-gd`, `php-curl`, `php-mbstring`, `php-xml`, `php-zip`, `php-intl`, `unzip`, `wget`.
+3. Apache Webserver starten und aktivieren:  
+   `systemctl start httpd` und `systemctl enable httpd`.
+4. Nextcloud herunterladen und entpacken (`latest.zip` von `download.nextcloud.com`),  
+   nach `/var/www/html/nextcloud` verschieben und Besitzrechte auf `apache:apache` setzen.
+5. Nach kurzer Wartezeit führt das Skript den Nextcloud-Installer (occ) aus und verbindet die Instanz mit der vorbereiteten RDS-MySQL-Datenbank.
+
+Der Webserver stellt Nextcloud anschließend unter `http://<EC2-PUBLIC-IP>/nextcloud` bereit [web:99][web:104]. 
 
 ### Datenbank-Setup
 Die Datenbank wird als Amazon RDS MySQL Instanz in der Region `us-east-1` bereitgestellt.  
@@ -121,8 +132,12 @@ Der Datenbank-Endpunkt wird danach über `aws rds describe-db-instances` ermitte
 Dieser Endpunkt wird später im `occ maintenance:install`‑Befehl genutzt, damit Nextcloud sich direkt mit der RDS‑Datenbank verbinden kann.
 
 ## Nextcloud
-Nachdem der DB-Server initialisiert wurde, wird nun noch ein Bash-Skript ausgeführt, in welchem als ertes Apache2 und dann php auf die Ubuntu-Instanz installiert wird. Nachdem Apache und php installiert wurde, wird im Gleichen noch der Webroot entleert, sodass Apache nicht mehr auf eine Fixe Datei weisst.
-Sobald der Webroot entleert wurde, wird das NextCloud-Archiev als ZIP-Datei auf die Instanz heruntergeladen und entpackt. Auf die entpackte ZIP-Datei wird dann mit CHOWN und CHMOD vollrechte gewährt, sodass Apache dann auch auf diese zugreiffen kann. Wenn dies alles erledigt ist, wird dann DirectoryIndex von Apache so eingestellt, dass es auf unsere NextCloud.php-Datei hinweisst.
+Die Nextcloud-Installation erfolgt vollständig automatisiert im User-Data-Skript der EC2-Instanz:
+
+1. Nextcloud wird im Verzeichnis `/tmp` als `latest.zip` von `https://download.nextcloud.com/server/releases/latest.zip` heruntergeladen und entpackt.  
+2. Der entpackte Ordner `nextcloud` wird nach `/var/www/html/` verschoben, sodass die Anwendung unter `/var/www/html/nextcloud` liegt.  
+3. Die Besitzrechte werden auf `apache:apache` gesetzt, damit der Webserver alle Dateien lesen und schreiben kann.  
+4. Nach einer kurzen Wartezeit (`sleep 30`) wird der Nextcloud-Installer per CLI ausgeführt
 
 ### Erstaufruf / Installationsassistent
 Wie bereits erwähnt im Bash-Skript in welchem Apache2 und php installiert wird, wird der Webroot entleert und das Archiv gelöst.
