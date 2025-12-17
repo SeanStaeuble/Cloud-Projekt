@@ -65,18 +65,18 @@ Eines der relevantesten Ziele ist die Bereitstellung eines Cloud-basierten Servi
 
 > [!IMPORTANT]
 > 
-> Dies ist nur die Verteilung der Hauptaufgaben der Projektmitglieder. Wichtig zu wissen ist, dass Noa und Stefan auch an den Skripts gearbeitet haben. Unter anderm hat Sean auch an der Dokumentation gearbeitet.
+> Dies ist nur die Verteilung der Hauptaufgaben der Projektmitglieder. Wichtig zu wissen ist, dass Noa und Stefan auch an den Skripts gearbeitet haben. Unter anderem hat Sean auch an der Dokumentation gearbeitet.
 
 ### Zeitplanung
 
 | Aufgabe                   | Verantwortlich | geplanter Zeitraum | gebrauchter Zeitraum |
 |---------------------------|----------------|--------------------|----------------------|
 | IaC Grundsetup            |      Sean      |         2h         |          3h          |
-| Webserver-Konfiguration   | Sean & Stefan  |         2h         |                      |
-| DB-Server & DB-Setup      |   Noa & Sean   |        1.5h        |                      |
-| Nextcloud-Installation    |      Sean      |        1.5h        |                      |
+| Webserver-Konfiguration   | Sean & Stefan  |         2h         |         2.5h         |
+| DB-Server & DB-Setup      |   Noa & Sean   |        1.5h        |         2.5h         |
+| Nextcloud-Installation    |      Sean      |        1.5h        |          4h          |
 | Tests                     |      Alle      |         1h         |                      |
-| Dokumentation             |  Stefan & Noa  |         4h         |                      |
+| Dokumentation             |  Stefan & Noa  |         4h         |          8h          |
 | README                    |      Sean      |         1h         |                      |
 
 ## Architektur
@@ -88,35 +88,22 @@ _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 
 ### Komponenten
 - Webserver (Ubuntu, Nextcloud, 72.44.61.93)
-- DB-Server (MySQL-DB, [IP] )
-- (Security Groups / Firewall)
+- DB-Server (MySQL-DB, dynamische IP)
 
 ## Umsetzung IaC und Infrastruktur
 ### IaC-Konzept
 - Visual Studio Code, schreiben der Skripts
 - PuTTY, Connection testen
-
-### Ordnerstruktur
-
-
+ 
 ### Webserver-Setup
-- Wie wird die VM erstellt?
-- Welche Pakete werden installiert?
-- Wie wird der Webserver konfiguriert (ohne Unterpfad)?
+- Wie wird die VM erstellt? (Sean)
+- Beim Setup des Webservers wird Apache2, php und MariaDB mitinstalliert. 
 
 ### Datenbank-Setup
-- Erstellung DB-Server
-- DB-Installation und User für Nextcloud
-- Nur interne Erreichbarkeit von Webserver aus
+Zuerst wird die DB durch einen Bash-Skript initialisiert. Im Bash-Skript wird der MariaDB-Server auf die Ubuntu Instanz installiert dannach wird ein Admin Benutzer erstellt. Dieses Admin Konto hat ausserdem Vollrechte und dieser kann dann die angegebenen Daten einsehen.
 
-### Automatisierung / Scripts
-- Wie startet man das Script?
-- Welche Ausgaben in der Konsole (IP, DB-Daten)?
-
-## Umsetzung Nextcloud
-### Installation
-- Download des Archivs
-- Entpacken, Rechte, PHP-Module
+## Nextcloud
+Nachdem der DB-Server initialisiert wurde, wird nun noch ein Bash-Skript ausgeführt, in welchem als ertes Apache2 und dann php auf die Ubuntu-Instanz installiert wird. 
 
 ### Erstaufruf / Installationsassistent
 - Wie wird sichergestellt, dass beim Aufruf der IP der Assistent erscheint?
@@ -166,8 +153,7 @@ _(Screenshots im Text referenzieren, z.B. `siehe Abbildung 1`.)_
 - …
 
 ### Glossar
-- IaC: …
-- VM: …
-- Security Group: …
-- Nextcloud: …
-- Repository: …
+- IaC: IT-Systeme werden nicht von Hand eingerichtet, sondern automatisch mit Code erstellt und verwaltet.
+- VM: Ein „virtueller Computer“, der auf einem echten Computer läuft und sich wie ein eigener PC verhält.
+- Nextcloud: Eine private Cloud, in der man Dateien, Fotos und Kalender selbst speichern und teilen kann.
+- Repository: Ein Online-Ablageort für Code, in dem Dateien gespeichert, geändert und gemeinsam genutzt werden.
