@@ -89,6 +89,7 @@ _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 ### Komponenten
 - Webserver (Ubuntu, Nextcloud, 72.44.61.93)
 - DB-Server (MySQL-DB, dynamische IP)
+- Secure Group
 
 ## Umsetzung IaC und Infrastruktur
 ### IaC-Konzept
@@ -96,61 +97,86 @@ _(Hier Bild einfügen, z.B. `![Architekturdiagramm](bilder/architektur.png)` )_
 - PuTTY, Connection testen
  
 ### Webserver-Setup
-- Wie wird die VM erstellt? (Sean)
-- Beim Setup des Webservers wird Apache2, php und MariaDB mitinstalliert. 
+Bei der Initialisierung der Ubuntu-Instanz, wird als erstes ein neues Key-Pair und eine Secure-Group erstellt. Nachdem das Key-Pair und die Security-Group erstellt wurde, wird mit "aws ec2 run-instances" die Instanz mit den folgenden Daten gestartet: Image-id, Anzahl Instanzen, Instanz-Typ, Erstelltes Key-Pair, Erstellte Security-Group, User-Data, Region, Tag-Spezifikationen und Querry erstellt.
+Beim Setup des Webservers wird Apache2, php und MariaDB mitinstalliert. 
 
 ### Datenbank-Setup
 Zuerst wird die DB durch einen Bash-Skript initialisiert. Im Bash-Skript wird der MariaDB-Server auf die Ubuntu Instanz installiert dannach wird ein Admin Benutzer erstellt. Dieses Admin Konto hat ausserdem Vollrechte und dieser kann dann die angegebenen Daten einsehen.
 
 ## Nextcloud
-Nachdem der DB-Server initialisiert wurde, wird nun noch ein Bash-Skript ausgeführt, in welchem als ertes Apache2 und dann php auf die Ubuntu-Instanz installiert wird. 
+Nachdem der DB-Server initialisiert wurde, wird nun noch ein Bash-Skript ausgeführt, in welchem als ertes Apache2 und dann php auf die Ubuntu-Instanz installiert wird. Nachdem Apache und php installiert wurde, wird im Gleichen noch der Webroot entleert, sodass Apache nicht mehr auf eine Fixe Datei weisst.
+Sobald der Webroot entleert wurde, wird das NextCloud-Archiev als ZIP-Datei auf die Instanz heruntergeladen und entpackt. Auf die entpackte ZIP-Datei wird dann mit CHOWN und CHMOD vollrechte gewährt, sodass Apache dann auch auf diese zugreiffen kann. Wenn dies alles erledigt ist, wird dann DirectoryIndex von Apache so eingestellt, dass es auf unsere NextCloud.php-Datei hinweisst.
 
 ### Erstaufruf / Installationsassistent
-- Wie wird sichergestellt, dass beim Aufruf der IP der Assistent erscheint?
-- Welche DB-Daten werden eingegeben?
+Wie bereits erwähnt im Bash-Skript in welchem Apache2 und php installiert wird, wird der Webroot entleert und das Archiv gelöst.
+Der DB-User wird am Ende des Skripts ausgegeben. Das PW des DB Benutzers (wird ebenfalls am Ende des Skripts ausgegeben)
+Beim Erstaufruf, werden folgende DB-Daten angegeben:
+ 
+- DB-Benutzer (Am Ende des Skripts Ausgegeben)
+- DB-Passwort (Am Ende des Skripts Ausgegeben)
+- DB-Name (Am Ende des Skripts Ausgegeben)
+- DB-Host ("IP des Datenbankservers:Port" / Am Ende des Skripts Ausgegeben)
 
 ## Tests
 ### Testkonzept
-- Ziel der Tests
-- Übersicht der Testfälle
+Das Ziel der Tests ist verschiedene Szenarien zu testen, und zu schauen ob die Website sicher ist, und das gefragte jeweils ausgibt und im allg. das macht was man will. Wir haben verschiedene Tests, zum einen der Abruf der IP in der Suchmaschine, dann noch die Verbindung von Nextcloud und der DB und zu guter letzt die Ausführung der IaC Skripts.
+
 
 ### Testprotokolle
 
-| Test-ID | Datum      | Testperson | Beschreibung                      | Erwartetes Ergebnis                         | Tatsächliches Ergebnis | Fazit / Massnahmen |
-|--------:|------------|-----------|------------------------------------|---------------------------------------------|------------------------|--------------------|
-| T1      |            |           | Aufruf IP                          | Man kommt von Drittgerät auf Webserver      |                        |                    |
-| T2      |            |           | Verbindung Nextcloud ↔ DB          | Verbindung erfolgreich                      |                        |                    |
-| T3      |            |           | Ausführung IaC-Script              | Infrastruktur wird ohne Fehler erstellt     |                        |                    |
-
-_(Screenshots im Text referenzieren, z.B. `siehe Abbildung 1`.)_
+| Test-ID | Datum      | Testperson | Beschreibung                      | Erwartetes Ergebnis                         | Tatsächliches Ergebnis |
+|--------:|------------|-----------|------------------------------------|---------------------------------------------|------------------------|
+| T1      |  13.12.25  |    SS     | Aufruf IP                          | Man kommt von Drittgerät auf Webserver      |     funktionierte      |
+| T2      |  14.12.25  |    SS     | Verbindung Nextcloud ↔ DB          | Verbindung erfolgreich                      |     funktionierte      |
+| T3      |  16.12.25  |    SS     | Ausführung IaC-Script              | Infrastruktur wird ohne Fehler erstellt     |     funktionierte      |
 
 ## Fazit & Reflexion
 ### Projektfazit (Gruppe)
 - Wurden alle Anforderungen erfüllt?
+  - Wir haben Wert darauf gelegt möglichst alle Anforderungen zu erfüllen, und haben die meisten auch erfüllen können.
 - Was hat gut funktioniert?
+  - Die Arbeit zusammen in der Guppe hat äusserst gut funktioniert, auch wenn wir mal nicht alle zur gleichen Zeit Zeit hatten, haben wir gut zusammengearbeitet.
 - Was könnte verbessert werden?
+  - Wir haben beim Testen oft kleine Flüchtigkeitsfehler gemacht was das ganze Ergebnis verhauen hat.
 
 ### Persönliche Reflexion Sean
-- Learnings
-- Schwierigkeiten
-- Verbesserungsansätze
+**Learnings**
+Ich habe viel über PowerShell- und IAC-Skripte gelernt. Was ich so besonderes gelernt habe, ist, dass man eigentlich alles, was man in AWS machen kann, auch per IAC ablaufen kann, was meiner Meinung nach, für das Erstellen komplizierter ist, aber im nachhinein das Einrichten und Wiederholen um vieles vereinfacht.
+ 
+**Schwierigkeiten**
+Eine meiner grössten Schwierigkeiten für mich, war es, dass ich am Anfang dachte, dass mein Skript überhaupt nicht funktionierte. Diese Vermutung hatte sich in meinem Kopf gebildet, da ich, sobald ich per IP mich auf die Webseite verbinden wollte, die Apache 2 Default-Page zu Augen bekam. Ich habe dann lange nach diesem Fehler recherchiert, bis mir der Gedanke kam, der Initialisierung eine längere Wartezeit zu genehmigen. 
+Ein anderes Problem war, dass ich lange den 3306 Port für MariaDB nicht freigegeben habe und bei dem Host auf der NextCloud-Webseite nicht die IP des DB-Servers angegeben habe.
+Es gab noch eine Schwierigkeit, für welche ich indirekt nichts kann, nämlich war das die grosse Anzahl an Projekten, die wir gleichzeitig bearbeiten mussten, was es einem schwierig machte, sich auf ein Projekt voll zu fokusieren.
+ 
+**Verbesserungsansätze**
+In Zukunft möchte ich mich besser zu den Fehlern informieren, indem ich auch bei meiner Lehrperson frühzeitig Fragen zu ihnen stelle.
+Ebenfalls möchte ich in Zukunft von Anfang an mir mehr Mühe und mehr Elan für die Projekte geben.
+ 
 
 ### Persönliche Reflexion Noa
-- …
+**Learnings**  
+- Ich habe gelernt, wie man mit einfachen Skripts einen Webserver und eine Datenbank in AWS startet und Nextcloud darauf vorbereitet.  
+- Jetzt verstehe ich besser, wie Webserver und Datenbank zusammenarbeiten und wozu Security Groups und interne IPs da sind.
+ 
+**Schwierigkeiten**  
+- Am schwierigsten war es, die User‑Data‑Skripte so hinzubekommen, dass der Nextcloud‑Installer wirklich über die öffentliche IP erscheint.  
+ 
+**Verbesserungsansätze**  
+- Beim nächsten Projekt möchte ich früher testen und mir Fehler mit mehr Ausgaben im Skript besser sichtbar machen.
 
 ### Persönliche Reflexion Stefan
-- …
+**Learnings**
+- Ich habe durch dieses Projekt viel über PS gelernt sowie auch wie man Github in Verknüpfung mit VSC benutzt. Ausserdem habe ich die Grundlage für IaC auch sehr gut und viel gelernt durch dieses Projekt.
 
-## Verzeichnisse
+**Schwierigkeiten**
+- Ich hatte zwar trotz guter Kommunikation noch oft Probleme mich zurecht zu finden, wenn die anderen gearbeitet haben und ich später alles aufgemacht habe. Ausserdem hatte ich allg. recht viele Probleme mit dem syncen.
 
-### Quellenverzeichnis
-- [1] Titel – URL – Abrufdatum
-- …
+**Verbesserungsansätze**
+- Ich möchte von Anfang an schon meine Private Zeit aufgeben, und nicht erst am Wochenende zuvor.
 
-### Bildverzeichnis
-- Abb. 1: Architekturdiagramm – Seite X
-- Abb. 2: Installationsassistent – Seite X
-- …
+## Quellenverzeichnis
+- [1] Perplexity AI - https://www.perplexity.ai - zuletzt besucht am 17.12.2025
+- [2] ChatGPT - (App Version) - zuletzt besucht am 15.12.2025
 
 ### Glossar
 - IaC: IT-Systeme werden nicht von Hand eingerichtet, sondern automatisch mit Code erstellt und verwaltet.
