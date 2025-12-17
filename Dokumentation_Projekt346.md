@@ -101,7 +101,24 @@ Bei der Initialisierung der Ubuntu-Instanz, wird als erstes ein neues Key-Pair u
 Beim Setup des Webservers wird Apache2, php und MariaDB mitinstalliert. 
 
 ### Datenbank-Setup
-Zuerst wird die DB durch einen Bash-Skript initialisiert. Im Bash-Skript wird der MariaDB-Server auf die Ubuntu Instanz installiert dannach wird ein Admin Benutzer erstellt. Dieses Admin Konto hat ausserdem Vollrechte und dieser kann dann die angegebenen Daten einsehen.
+Die Datenbank wird als Amazon RDS MySQL Instanz in der Region `us-east-1` bereitgestellt.  
+Dabei verwendet das Skript folgende Parameter:
+
+- Instanzname: `nextcloud-db`
+- Engine: `mysql`
+- Instanzklasse: `db.t3.micro`
+- Speicher: 20 GB
+- DB-Name: `nextcloud`
+- Benutzer: `ncuser`
+- Passwort: `Nextcloud123!`
+- Öffentlich erreichbar: `true`
+- Security Group: `SG_Nextcloud_RDS` (erlaubt Port 3306 von der EC2-SG)
+
+Zuerst erstellt das Skript die Security Group `SG_Nextcloud_RDS` und erlaubt eingehenden Traffic auf Port 3306 ausschließlich von der EC2‑Security‑Group `SG_Nextcloud_EC2`.  
+Anschließend wird mit `aws rds create-db-instance` die MySQL‑Instanz erzeugt und mit `aws rds wait db-instance-available` gewartet, bis sie verfügbar ist.
+
+Der Datenbank-Endpunkt wird danach über `aws rds describe-db-instances` ermittelt und in der Variable `DB_ENDPOINT` gespeichert.  
+Dieser Endpunkt wird später im `occ maintenance:install`‑Befehl genutzt, damit Nextcloud sich direkt mit der RDS‑Datenbank verbinden kann.
 
 ## Nextcloud
 Nachdem der DB-Server initialisiert wurde, wird nun noch ein Bash-Skript ausgeführt, in welchem als ertes Apache2 und dann php auf die Ubuntu-Instanz installiert wird. Nachdem Apache und php installiert wurde, wird im Gleichen noch der Webroot entleert, sodass Apache nicht mehr auf eine Fixe Datei weisst.
@@ -111,11 +128,14 @@ Sobald der Webroot entleert wurde, wird das NextCloud-Archiev als ZIP-Datei auf 
 Wie bereits erwähnt im Bash-Skript in welchem Apache2 und php installiert wird, wird der Webroot entleert und das Archiv gelöst.
 Der DB-User wird am Ende des Skripts ausgegeben. Das PW des DB Benutzers (wird ebenfalls am Ende des Skripts ausgegeben)
 Beim Erstaufruf, werden folgende DB-Daten angegeben:
- 
-- DB-Benutzer (Am Ende des Skripts Ausgegeben)
-- DB-Passwort (Am Ende des Skripts Ausgegeben)
-- DB-Name (Am Ende des Skripts Ausgegeben)
-- DB-Host ("IP des Datenbankservers:Port" / Am Ende des Skripts Ausgegeben)
+
+- Name des Adminkontos: administrator
+- Passwort des Adminkontos: nextcloud2!
+- Datenortner: /var/www/html/nextcloud/data
+- DB-Benutzer: (Am Ende des Skripts Ausgegeben)
+- DB-Passwort: (Am Ende des Skripts Ausgegeben)
+- DB-Name: (Am Ende des Skripts Ausgegeben)
+- DB-Host: ("IP des Datenbankservers:Port" / Am Ende des Skripts Ausgegeben)
 
 ## Tests
 ### Testkonzept
